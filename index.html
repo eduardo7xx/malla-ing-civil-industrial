@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Interactiva - Ingeniería Civil Industrial UDD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .semestre {
+      margin-bottom: 30px;
+    }
+    .semestre h2 {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .curso {
+      display: inline-block;
+      background-color: #e9ecef;
+      padding: 15px 20px;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .curso:hover {
+      background-color: #dee2e6;
+    }
+    .info-box {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #e2e3e5;
+      border-left: 5px solid #007bff;
+      display: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Malla Interactiva - Ingeniería Civil Industrial UDD</h1>
+<div id="contenedor-malla"></div>
+<div id="info" class="info-box"></div>
+
+<script>
+const malla = {
+  "1° Semestre": [
+    "Introducción a la Vida Universitaria", "Desafíos de la Ingeniería Industrial", "Introducción al Cálculo",
+    "Álgebra", "Taller de Exploración Tecnológica y Prototipado", "Comunicación Escrita", "Comunicación Oral"
+  ],
+  "2° Semestre": [
+    "Gestión de Empresas", "Taller de Innovación y Diseño", "Geometría", "Cálculo Diferencial",
+    "Créditos Extradisciplinares de Libre Elección", "Taller de Habilidades para la Autogestión", "Lectura Crítica", "Pensamiento Crítico"
+  ],
+  "3° Semestre": [
+    "Química", "Cálculo Integral", "Álgebra Lineal", "Taller de Programación",
+    "Taller de Habilidades Socioemocionales", "Créditos Extradisciplinares de Libre Elección", "Inglés Nivel A2"
+  ],
+  "4° Semestre": [
+    "Capstone de Ciencias, Tecnología y Diseño", "Física", "Semana I", "Cálculo Multivariable",
+    "Probabilidades y Estadística", "Base de Datos", "Inglés Nivel A2+", "Gestión de Procesos"
+  ],
+  "5° Semestre": [
+    "Contabilidad y Costos", "Ecuaciones Diferenciales", "Mecánica", "Optimización",
+    "Gestión de Proyectos", "Taller de Visualización de la Información", "Inglés Nivel B1-"
+  ],
+  "6° Semestre": [
+    "Economía", "Termodinámica", "Tópicos de Optimización", "Análisis de Datos",
+    "Research Seminar", "Taller de Liderazgo", "Créditos Extradisciplinares de Libre Elección", "Práctica Profesional I"
+  ],
+  "7° Semestre": [
+    "Business Intelligence", "Finanzas", "Gestión de Operaciones", "Mecánica de Fluidos",
+    "Simulación y Decisiones Bajo Incertidumbre", "Taller de Métodos de Innovación Ágiles", "Inglés Nivel B1+"
+  ],
+  "8° Semestre": [
+    "Ingeniería y Sostenibilidad", "Capstone Analytics", "Digital Transformation",
+    "Evaluación Económica de Proyectos", "Gestión de la Cadena de Suministros", "Examen de Licenciatura",
+    "Taller de Comunicación Efectiva", "Taller de Evaluación Técnica de Proyectos", "Inglés Nivel B2-", "Práctica Profesional II"
+  ],
+  "9° Semestre": [
+    "Curso 1 Diploma", "Curso 2 Diploma", "Dirección de Personas", "Gestión de Servicios",
+    "Strategic Management", "Créditos Extradisciplinares de Libre Elección", "Inglés Nivel B2+"
+  ],
+  "10° Semestre": [
+    "Curso 3 Diploma", "Curso 4 Diploma", "Capstone de Consultoría",
+    "Habilidades Directivas y Toma de Decisiones", "Strategic Marketing",
+    "Ética Profesional", "Taller de Empleabilidad"
+  ]
+};
+
+const contenedor = document.getElementById("contenedor-malla");
+for (const [semestre, cursos] of Object.entries(malla)) {
+  const div = document.createElement("div");
+  div.className = "semestre";
+  div.innerHTML = `<h2>${semestre}</h2>`;
+  cursos.forEach(nombre => {
+    const boton = document.createElement("div");
+    boton.className = "curso";
+    boton.innerText = nombre;
+    boton.onclick = () => mostrar(nombre);
+    div.appendChild(boton);
+  });
+  contenedor.appendChild(div);
+}
+
+function mostrar(nombre) {
+  const infoBox = document.getElementById("info");
+  infoBox.innerHTML = `<strong>${nombre}</strong><br>Haz clic en este ramo para agregar una descripción personalizada.`;
+  infoBox.style.display = "block";
+}
+</script>
+
+</body>
+</html>
